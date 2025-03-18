@@ -1,0 +1,184 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --cor1: #E7EB00;
+    --cor2: #EBCF00;
+    --cor3: #EBB300;
+    --cor4: #EB9600;
+    --cor5: #85EB00;
+}
+
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    background-color: var(--cor4);
+    padding: 30px;
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.753);
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    background-color: var(--cor3);
+    padding: 10px;
+    width: 100%;
+    border-radius: 0px 0px 30px 0px;
+    height: 50px;
+    overflow-x: auto; /* Caso o menu ultrapasse a tela */
+}
+
+nav > a {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 20px;
+    background-color: var(--cor1);
+    padding: 9px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+nav > a:hover {
+    background-color: var(--cor4);
+    font-size: 18px;
+    transition-duration: 0.2s;
+}
+
+nav > button {
+    border-radius: 10px;
+}
+
+main {
+    background-color: white;
+    margin-top: 20px;
+    text-align: left;
+    padding: 10px;
+}
+
+main > h1 {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+main > div {
+    text-align: center;
+    border-style: groove;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 340px;
+}
+
+main > div > p {
+    display: flex;
+    margin: 10px;
+    font-size: 18px;
+}
+
+main > div > div {
+    border-style: dotted;
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    color: white;
+}
+
+main > h2 {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px;
+    font-size: 30px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    /* Layout para dispositivos móveis e tablets */
+    header {
+        padding: 20px;
+    }
+
+    nav {
+        display: flex;
+        height: auto;
+        justify-content: space-around;
+    }
+
+    nav > a {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 80px;
+        text-align: center;
+    }
+
+    main > div {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    main > div > p {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    main > div > div {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Ajuste nas imagens (quando você adicionar imagens reais) */
+    main > div > img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para telas de smartphones (dispositivos Android) */
+    header {
+        font-size: 22px;
+        padding: 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    nav > a {
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    main > div > p {
+        font-size: 14px;
+    }
+
+    main > div > div {
+        width: 100px;
+        height: 100px;
+    }
+
+    main {
+        padding: 10px;
+    }
+}

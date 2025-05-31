@@ -4,7 +4,7 @@ import webbrowser
 import time
 
 
-mensagem = " Olá, tudo bem? sou um bot criado por Erick, está mensagem é automatica."
+mensagem = "Olá, tudo bem? sou um bot criado por Erick, está mensagem é automatica."
 
 
 if os.path.getsize("telefones.txt") == 0:

@@ -1,58 +1,48 @@
-<<<<<<< HEAD
-import pyautogui
-import os
 import webbrowser
-import time
-
-
-mensagem = "Olá, tudo bem? sou um bot criado por Erick, está mensagem é automatica."
-
-
-if os.path.getsize("telefones.txt") == 0:
-    print("O arquivo está vazio.")
-else:
-    with open("telefones.txt", "r") as arquivo:
-        for linha in arquivo:
-            telefone = linha.strip()
-            if telefone: 
-                link = f"https://wa.me/{telefone}?text={mensagem.replace(' ', '%20')}"
-                webbrowser.open(link)
-                time.sleep(10)  
-
-                
-                pyautogui.press("enter")
-                print(f"Mensagem enviada para {telefone}")
-                time.sleep(5) 
-                pyautogui.hotkey("alt","f4")
-                time.sleep(2)
-                pyautogui.hotkey("alt","f4")
-=======
+import pyperclip
+from time import sleep
+from datetime import datetime
 import pyautogui
-import os
-import webbrowser
-import time
 
 
-mensagem = "Olá, tudo bem? sou um bot criado por Erick, está mensagem é automatica."
-
-
-if os.path.getsize("telefones.txt") == 0:
-    print("O arquivo está vazio.")
-else:
-    with open("telefones.txt", "r") as arquivo:
-        for linha in arquivo:
-            telefone = linha.strip()
-            if telefone: 
-                link = f"https://wa.me/{telefone}?text={mensagem.replace(' ', '%20')}"
+def mandar_mensagem():
+    with open("lista.txt", "r", encoding="utf-8") as lista:
+        next(lista)  
+        
+        hoje = datetime.now().date()
+        
+        for linha in lista:
+          
+            partes = [p.strip() for p in linha.strip().split("|")]
+            if len(partes) < 3:
+                continue  
+            
+            nome = partes[0]
+            numero = partes[1]
+            data_str = partes[2]
+            
+           
+            data_obj = datetime.strptime(data_str, "%d/%m/%Y").date()
+            
+           
+            if data_obj == hoje:
+                mensagem = f"Olá {nome}! Esta é uma mensagem automática."
+                sleep(6)
+                link = f"https://wa.me/{numero.replace('(', '').replace(')', '').replace(' ', '').replace('-', '')}"
                 webbrowser.open(link)
-                time.sleep(10)  
+                sleep(10)
+                escrever(mensagem)
 
-                
-                pyautogui.press("enter")
-                print(f"Mensagem enviada para {telefone}")
-                time.sleep(5) 
-                pyautogui.hotkey("alt","f4")
-                time.sleep(2)
-                pyautogui.hotkey("alt","f4")
->>>>>>> 4e2ccf9ed7b0ef0a2b7a0ac03c443644f790fd0d
-                time.sleep(2)
+                print(f"Mensagem pronta para {nome} ({numero})")
+
+
+def escrever(texto):
+     pyperclip.copy(texto)
+     sleep(3)
+     pyautogui.hotkey("ctrl","v")
+     sleep(3)
+     pyautogui.press("enter")
+
+
+
+mandar_mensagem()

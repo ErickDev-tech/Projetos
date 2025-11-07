@@ -47,17 +47,17 @@ def iniciar_driver():
 
 driver = iniciar_driver()
 
-#1-- entrar no site (https://www.speedtest.net/pt/result/18284608214)
+#1-- Entrar no site (https://www.speedtest.net/pt/result/18284608214)
 driver.get("https://www.speedtest.net/pt/result/18284608214")
 
-#2 --clicar no botão iniciar
+#2 --Clicar no botão iniciar
 botão_iniciar = driver.find_element(By.CLASS_NAME,"start-text")
 botão_iniciar.click()
 
 sleep(60)
 
-#3 -- pegar as informações(download, Upload , ping , id , servidor ,operadora, data e hora do teste)
-#5 -- guarda as informações
+#3 -- Pegar as informações(download, Upload , ping , id , servidor ,operadora, data e hora do teste)
+#5 -- Guarda as informações
 download_upload = driver.find_elements(
     By.CSS_SELECTOR, ".result-data-large.number.result-data-value"
 )
@@ -83,7 +83,7 @@ operadora = driver.find_element(By.CSS_SELECTOR, ".result-label.js-data-isp").te
 
 
 
-#4 -- coparar o download , se estiver menor que 10  mps = ruim
+#4 -- Comparar o download , se estiver menor que 10  mps = ruim
 download_num = float(download.replace(",","."))
 
 if download_num < 10:
@@ -91,7 +91,7 @@ if download_num < 10:
 else:
     status = "Bom"
 
-#6 -- criar o pdf
+#6 -- Criar o pdf
 pdf  = FPDF()
 pdf.add_page()
 pdf.set_font("Arial", "B", 16)
